@@ -1,18 +1,18 @@
 
 window.LOVE_LETTER = {
-  recipient: "Oumayma💕",
-  dedication: "In a world full of everything, your eyes is my favorite part.",
+  recipient: "My love",
+  dedication: "In a world full of everything, you’re my favorite part.",
   memories: [
     {
       photo: "assets/o(1).jpg",
-      position: "60% 45%",
+      position: "70% 20%",
       alt: "Soft spring blossoms — replace with your favorite photo of her",
       caption: "The way you make me smile",
       title: "My happiest thought",
       message: "I catch myself smiling at my phone, at a memory, at nothing at all. Then I realize it’s you. Somehow, you make even the hours we spend apart feel a little less ordinary."
     },
     {
-      photo: "assets/o(2).jpg",
+      photo: "assets/v(4).mp4",
       position: "50% 30%",
       alt: "A delicate pink flower — replace with your favorite photo of her",
       caption: "My favorite place is with you",
@@ -20,7 +20,7 @@ window.LOVE_LETTER = {
       message: "With you, I don’t have to find the right words or be the best version of myself every second. I can just be. Thank you for making a place in your heart where I can breathe."
     },
     {
-      photo: "assets/o(3).jpg",
+      photo: "assets/v(2).mp4",
       position: "50% 30%",
       alt: "Dreamy pink blossoms — replace with your favorite photo of her",
       caption: "All the tomorrows I wish for",
@@ -36,16 +36,16 @@ window.LOVE_LETTER = {
       message: "You don’t have to have something exciting to tell me. Tell me about your lunch, the song stuck in your head, the thing that made today feel long. I want the little pieces of your day because they’re yours."
     },
     {
-      photo: "assets/o(5).jpg",
-      position: "40% 20%",
+      photo: "assets/v(3).mp4",
+      position: "60% 40%",
       alt: "Spring flowers — replace with another favorite photo of her",
       caption: "The little things I notice",
       title: "So wonderfully you",
       message: "I love that there are things about you I’m still learning. Every little opinion, every unexpected laugh, every story you remember halfway through another one. Loving you means I get to keep discovering my favorite person."
     },
     {
-      photo: "assets/o(6).jpg",
-      position: "45% 65%",
+      photo: "assets/v(1).mp4",
+      position: "45% 40%",
       alt: "A soft pink flower — replace with another favorite photo of her",
       caption: "A promise, from my heart",
       title: "I’ll keep showing up",

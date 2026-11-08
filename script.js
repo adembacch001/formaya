@@ -52,14 +52,29 @@
       const article = document.createElement('article');
       article.className = 'memory';
       article.innerHTML = `<button class="heart-button" type="button" aria-pressed="false" aria-controls="note-${index}">
-        <span class="heart-face"><img class="heart-image" draggable="false" width="900" height="900"><span class="photo-wash"></span><span class="photo-hint" aria-hidden="true"><span>♡</span> A LITTLE LOVE INSIDE</span><span class="heart-note" id="note-${index}" aria-hidden="true"><span class="note-number" aria-hidden="true">♡</span><span class="note-title"></span><span class="note-copy"></span></span></span>
+        <span class="heart-face"><span class="media-slot"></span><span class="photo-wash"></span><span class="photo-hint" aria-hidden="true"><span>♡</span> A LITTLE LOVE INSIDE</span><span class="heart-note" id="note-${index}" aria-hidden="true"><span class="note-number" aria-hidden="true">♡</span><span class="note-title"></span><span class="note-copy"></span></span></span>
         <svg class="heart-outline" viewBox="0 0 1 1" aria-hidden="true"><path d="M.5,.19 C.29,-.035 .015,.07 .015,.30 C.015,.52 .29,.75 .5,.94 C.71,.75 .985,.52 .985,.30 C.985,.07 .71,-.035 .5,.19Z"/><path class="inner-outline" d="M.5,.19 C.29,-.035 .015,.07 .015,.30 C.015,.52 .29,.75 .5,.94 C.71,.75 .985,.52 .985,.30 C.985,.07 .71,-.035 .5,.19Z"/></svg>
         </button><p class="memory-caption"><span class="caption-number">0${index + 1}</span><span class="caption-divider"></span><span class="caption-text"></span></p>`;
       const button = article.querySelector('button');
-      const photo = article.querySelector('img');
-      photo.src = memory.photo;
-      photo.alt = memory.alt;
-      photo.style.objectPosition = memory.position;
+      const isVideo = /\.(mp4|webm)(\?.*)?$/i.test(memory.photo);
+const photo = document.createElement(isVideo ? 'video' : 'img');
+
+photo.className = 'heart-image';
+photo.draggable = false;
+photo.style.objectPosition = memory.position;
+
+if (isVideo) {
+  photo.muted = true;
+  photo.autoplay = true;
+  photo.loop = true;
+  photo.playsInline = true;
+  photo.setAttribute('aria-label', memory.alt);
+} else {
+  photo.alt = memory.alt;
+}
+
+photo.src = memory.photo;
+article.querySelector('.media-slot').replaceWith(photo);
       photo.addEventListener('error', () => { photo.hidden = true; }, { once: true });
       article.querySelector('.note-title').textContent = memory.title;
       article.querySelector('.note-copy').textContent = memory.message;
@@ -94,8 +109,8 @@
     button.setAttribute('aria-pressed', String(opening));
     button.setAttribute('aria-label', `${opening ? 'Show photo' : 'Open love note'} ${index + 1}: ${gift.memories[index].caption}`);
     button.querySelector('.heart-note').setAttribute('aria-hidden', String(!opening));
-    button.querySelector('img').setAttribute('aria-hidden', String(opening));
-    if (opening) {
+button.querySelector('.heart-image')
+  .setAttribute('aria-hidden', String(opening));    if (opening) {
       discovered.add(index);
       const rect = button.getBoundingClientRect();
       burst(event.detail ? event.clientX : rect.x + rect.width / 2, event.detail ? event.clientY : rect.y + rect.height / 2, 12);
