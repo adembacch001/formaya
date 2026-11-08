@@ -1,7 +1,7 @@
 
 window.LOVE_LETTER = {
-  recipient: "My love",
-  dedication: "In a world full of everything, you’re my favorite part.",
+  recipient: "Oumayma💕",
+  dedication: "In a world full of everything, your eyes is my favorite part.",
   memories: [
     {
       photo: "assets/o(1).jpg",
