@@ -150,49 +150,42 @@
   });
 
   // A quiet, original music-box melody. Audio starts only after a deliberate click.
-  function playTone() {
-    const melody = [261.63, 329.63, 392, 523.25, 493.88, 392, 329.63, 293.66, 261.63, 349.23, 440, 523.25, 440, 349.23, 329.63, 293.66];
-    const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-    const now = audioContext.currentTime;
-    oscillator.type = 'sine';
-    oscillator.frequency.value = melody[noteIndex++ % melody.length];
-    gain.gain.setValueAtTime(.0001, now);
-    gain.gain.exponentialRampToValueAtTime(.045, now + .025);
-    gain.gain.exponentialRampToValueAtTime(.0001, now + 2.4);
-    oscillator.connect(gain);
-    gain.connect(audioContext.destination);
-    oscillator.start(now);
-    oscillator.stop(now + 2.5);
-    oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
-  }
-  $('#music-button').addEventListener('click', async () => {
-    const button = $('#music-button');
-    button.disabled = true;
-    try {
-      audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
-      if (playing) {
-        clearInterval(musicTimer);
-        await audioContext.suspend();
-        playing = false;
-      } else {
-        await audioContext.resume();
-        playTone();
-        musicTimer = setInterval(() => { if (!document.hidden) playTone(); }, 720);
-        playing = true;
-      }
-      button.setAttribute('aria-pressed', String(playing));
-      $('#music-label').textContent = playing ? 'Sound on' : 'Sound off';
-    } catch {
-      $('#music-label').textContent = 'Sound unavailable';
-    } finally { button.disabled = false; }
-  });
-  document.addEventListener('visibilitychange', () => {
-    if (!audioContext || !playing) return;
-    if (document.hidden) audioContext.suspend().catch(() => {});
-    else audioContext.resume().catch(() => {});
-  });
+ // Your background song.
+const song = new Audio('assets/music.mp3');
+song.loop = true;
+song.volume = 1; // 0 = silent, 1 = full volume
 
+$('#music-button').addEventListener('click', async () => {
+  const button = $('#music-button');
+  button.disabled = true;
+
+  try {
+    if (playing) {
+      song.pause();
+      playing = false;
+    } else {
+      await song.play();
+      playing = true;
+    }
+
+    button.setAttribute('aria-pressed', String(playing));
+    $('#music-label').textContent =
+      playing ? 'Sound on' : 'Sound off';
+  } catch {
+    $('#music-label').textContent = 'Tap to retry';
+  } finally {
+    button.disabled = false;
+  }
+});
+
+// Start the song with the first click or tap.
+document.addEventListener('click', (event) => {
+  if (event.target.closest?.('#music-button')) return;
+
+  if (!playing && !$('#music-button').disabled) {
+    $('#music-button').click();
+  }
+}, { once: true });
   // Personalization is entirely local. Exported config.js can travel with the gift.
   $('#personalize-button').addEventListener('click', () => {
     pendingPhotos.clear();
