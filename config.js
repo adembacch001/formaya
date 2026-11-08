@@ -1,6 +1,6 @@
 
 window.LOVE_LETTER = {
-  recipient: "My love",
+  recipient: "Oumayma,Maya💕💕",
   dedication: "In a world full of everything, you’re my favorite part.",
   memories: [
     {
