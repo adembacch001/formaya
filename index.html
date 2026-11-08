@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f9e9ee">
+  <meta name="description" content="Six little reminders of how much you mean to me. A love letter, just for you.">
+  <title>My Favorite Person · A Little Love Letter</title>
+  <link rel="icon" href="assets/heart.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=6-hearts-grid-3">
+  <script src="config.js?v=6-hearts-grid-3" defer></script>
+  <script src="script.js?v=6-hearts-grid-3" defer></script>
+</head>
+<body>
+  <svg class="svg-definitions" aria-hidden="true"><defs><clipPath id="heart-clip" clipPathUnits="objectBoundingBox"><path d="M.5,.19 C.29,-.035 .015,.07 .015,.30 C.015,.52 .29,.75 .5,.94 C.71,.75 .985,.52 .985,.30 C.985,.07 .71,-.035 .5,.19Z"/></clipPath></defs></svg>
+  <div class="ambient" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div id="particles"></div><span class="ambient-heart ah-one">♡</span><span class="ambient-heart ah-two">♡</span><span class="ambient-heart ah-three">♥</span><span class="ambient-heart ah-four">♡</span></div>
+  <header class="topbar">
+    <a class="wordmark" href="#main"><span class="brand-heart" aria-hidden="true">♡</span> a little love letter<span class="brand-dot">.</span></a>
+    <div class="top-actions">
+      <button id="music-button" class="music-button" type="button" aria-pressed="false"><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="music-label">Sound off</span></button>
+      <button class="personalize-button" id="personalize-button" type="button" aria-label="Personalize photos and love messages" title="Personalize this love letter">✧<span> Make it yours</span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="introduction" aria-labelledby="title">
+      <p class="eyebrow"><span></span> FOR YOU. ONLY YOU. <span></span></p>
+      <h1 id="title">My <em>favorite</em> person<span class="title-period">.</span></h1>
+      <p class="dedication" id="dedication">In a world full of everything, you’re my favorite part.</p>
+      <p class="instruction"><span aria-hidden="true">✧</span> Touch a heart. There’s a little love waiting inside.</p>
+    </section>
+    <section class="heart-gallery" id="heart-gallery" aria-label="Six photos with hidden love notes">
+      <svg class="love-thread" viewBox="0 0 1150 400" aria-hidden="true"><path d="M20 240C80 110 200 375 375 220S610 110 740 200 980 340 1125 145"/><path class="thread-second" d="M0 265C190 80 300 370 470 230S780 90 1150 230"/></svg>
+      <span class="gallery-spark spark-one" aria-hidden="true">✧</span><span class="gallery-spark spark-two" aria-hidden="true">✦</span>
+    </section>
+    <section class="discovery" aria-label="Love note progress">
+      <div class="progress-hearts" id="progress-hearts" aria-hidden="true"><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span></div>
+      <p id="progress-text" role="status" aria-live="polite">0 of 6 little love notes discovered</p>
+      <button class="final-trigger" id="final-trigger" type="button" disabled><span class="letter-icon" aria-hidden="true">✉</span><span id="final-trigger-text">One more thing, just for you…</span><span id="lock-icon" aria-hidden="true">⌑</span></button>
+      <p class="unlock-hint" id="unlock-hint">Open every heart to find your last surprise.</p>
+    </section>
+  </main>
+  <footer><span class="footer-line"></span><p>Made with all the love I sometimes forget to put into words.</p><span class="footer-heart" aria-hidden="true">♥</span><span class="footer-line"></span></footer>
+  <div id="burst-layer" aria-hidden="true"></div>
+  <dialog id="final-dialog" class="final-dialog" aria-labelledby="final-title">
+    <button type="button" class="close-button" data-close="final-dialog" aria-label="Close love letter">×</button>
+    <div class="final-inner"><div class="final-heart" aria-hidden="true">♥<span>✧</span></div><p class="eyebrow">EVERY LITTLE THING LEADS BACK TO YOU</p><h2 id="final-title">I Love You <span aria-label="heart">❤️</span></h2><p class="final-salutation" id="final-salutation">My love,</p><p id="final-message"></p><p class="signature" id="signature">Always, and in all ways. ♡</p><button id="replay-button" class="primary-button" type="button">A little more love <span aria-hidden="true">↻</span></button><button class="text-button" data-close="final-dialog" type="button">Stay here a little longer</button></div>
+  </dialog>
+  <dialog class="editor-dialog" id="editor-dialog" aria-labelledby="editor-title">
+    <button type="button" class="close-button" data-close="editor-dialog" aria-label="Close personalization">×</button>
+    <p class="eyebrow">A LOVE LETTER THAT’S YOURS</p><h2 id="editor-title">Make it <em>personal.</em></h2>
+    <p class="editor-intro">Add her photos and the words only you would say. The flowers are just sample photos.</p>
+    <form id="personalize-form">
+      <label class="field-label" for="recipient">Her name or nickname</label><input id="recipient" name="recipient" maxlength="40" placeholder="My love">
+      <div id="photo-fields"></div>
+      <label class="field-label" for="final-copy">Your final love letter</label><textarea id="final-copy" name="finalCopy" rows="5" maxlength="1500" required></textarea>
+      <label class="field-label" for="sign-off">Your sign-off</label><input id="sign-off" name="signature" maxlength="100">
+      <p class="editor-help">Saved photos and words stay in this browser. To include them in the website you share, download your settings and replace <code>config.js</code> in the site folder.</p>
+      <p id="editor-status" role="status" aria-live="polite"></p>
+      <div class="editor-actions"><button class="primary-button" type="submit">Save my love letter <span aria-hidden="true">♡</span></button><button class="secondary-button" id="download-config" type="button">Download settings</button></div>
+    </form>
+  </dialog>
+  <noscript><p class="noscript">Please enable JavaScript to open your little love notes.</p></noscript>
+</body>
+</html>
